@@ -10,7 +10,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/lbRecommended"
+            android:id="@+id/lbCategory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" /> " />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRecommendedMovie"
+            android:id="@+id/rvCategory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -32,7 +32,7 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbRecommended"
+            app:layout_constraintTop_toBottomOf="@+id/lbCategory"
             app:spanCount="3"
             tools:listitem="@layout/item_category" />
 
