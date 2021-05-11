@@ -1,3 +1,45 @@
 <resources>
     <string name="app_name">Couch_Potato</string>
+    <string name="lb_movie_image">Movie Image</string>
+    <string name="lb_banner_image">Banner Image</string>
+    <string name="lb_movie_title">Wonder Women</string>
+    <string name="lb_description"><u>Description</u></string>
+    <string name="sample_description_value">Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
+        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
+    </string>
+    <string name="lb_view_links"><u>View Links</u></string>
+    <string name="lb_sample_view_link"><u>https://www.youtube.com/watch?v=Zi4LMpSDccc</u></string>
+    <string name="lb_movie_new_image">Movie_New_Image</string>
+    <string name="lb_sample_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
+    <string name="lb_1">1</string>
 </resources>
