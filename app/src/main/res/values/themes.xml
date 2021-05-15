@@ -36,7 +36,7 @@
         <item name="android:textColor">#0800FF</item>
     </style>
 
-    <style name="movieDetail.title.description">
+    <style name="movieDetail.title.sub">
         <item name="android:textColor">#040404</item>
     </style>
 </resources>

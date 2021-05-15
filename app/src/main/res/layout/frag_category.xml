@@ -10,17 +10,18 @@
         android:layout_height="match_parent">
 
         <TextView
+            style="@style/movieDetail.title.sub"
             android:id="@+id/lbCategory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="12dp"
-            android:text="Categories"
+            android:text="@string/lb_categories"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" /> " />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCategory"
