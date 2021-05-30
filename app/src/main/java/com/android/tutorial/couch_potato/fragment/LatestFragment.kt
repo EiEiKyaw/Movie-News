@@ -13,6 +13,6 @@ class LatestFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.frag_latest, container, false)
+        return inflater.inflate(R.layout.frag_movie_list, container, false)
     }    
 }
