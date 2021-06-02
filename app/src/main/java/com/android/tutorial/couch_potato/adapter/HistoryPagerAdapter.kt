@@ -1,9 +1,10 @@
-package com.android.tutorial.couch_potato.fragment
+package com.android.tutorial.couch_potato.adapter
 
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.android.tutorial.couch_potato.R
+import com.android.tutorial.couch_potato.fragment.HistoryBookmarkFragment
+import com.android.tutorial.couch_potato.fragment.HistoryFavoriteFragment
 
 class HistoryPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 

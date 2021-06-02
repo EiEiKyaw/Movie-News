@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("")
+    @GET("?")
     fun getByTitle(
         @Query("t") title: String,
         @Query("plot") plot: String
