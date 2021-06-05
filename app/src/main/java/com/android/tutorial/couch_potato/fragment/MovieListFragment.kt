@@ -19,23 +19,19 @@ import retrofit2.Response
 
 class MovieListFragment : Fragment(), MovieDelegate {
 
+    private lateinit var adapter: MovieListFragAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.frag_movie_list, container, false)
-        val adapter = MovieListFragAdapter(this)
+        adapter = MovieListFragAdapter(this)
         val rvMovies: RecyclerView = view.findViewById(R.id.rvLatestMovies)
-        val movieList = mutableListOf<Movie>()
-        setMovie("batman", movieList)
-        setMovie("frozen", movieList)
-        setMovie("harry-potter", movieList)
-        Log.d("response", "total size............." + (movieList.size))
-        adapter.setNewData(movieList)
-        movieList.forEach {
-            Log.d("response", "movie title.....................${it.title}")
-        }
+        setMovie("batman")
+        setMovie("frozen")
+        setMovie("harry-potter")
         rvMovies.adapter = adapter
         rvMovies.layoutManager =
             LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
@@ -47,7 +43,7 @@ class MovieListFragment : Fragment(), MovieDelegate {
         Log.d("response", "click movie.........${movie.imdbID}")
     }
 
-    private fun setMovie(title: String, movieList: MutableList<Movie>) {
+    private fun setMovie(title: String) {
         RestClient.getApiService()
             .getByTitle(title, "full")
             .enqueue(object : Callback<Movie> {
@@ -57,9 +53,9 @@ class MovieListFragment : Fragment(), MovieDelegate {
                 ) {
                     if (response.isSuccessful) {
                         Log.d("response", "......success")
-                        response.body()?.let {
-                            movieList.add(it)
-                            Log.d("response", "size............." + (movieList.size))
+                        response.body()?.let {movie ->
+                            adapter.setNewData(movie)
+                            Log.d("response", "movie............." + movie.title)
                         }
                     }
                 }

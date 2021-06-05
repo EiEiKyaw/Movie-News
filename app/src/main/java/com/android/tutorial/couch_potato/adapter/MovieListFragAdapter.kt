@@ -1,5 +1,6 @@
 package com.android.tutorial.couch_potato.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,7 @@ class MovieListFragAdapter(
         return MyViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val movie = movieList[position]
         holder.itemView.apply {
@@ -44,10 +46,15 @@ class MovieListFragAdapter(
         return movieList.size
     }
 
-    fun setNewData(list: List<Movie>){
+    fun setNewDataList(list: List<Movie>){
         movieList.clear()
         movieList.addAll(list)
         notifyDataSetChanged()
+    }
+
+    fun setNewData(movie: Movie){
+        movieList.add(movie)
+        notifyItemInserted(movieList.size - 1)
     }
 
 }
