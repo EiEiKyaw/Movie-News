@@ -12,14 +12,15 @@ import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.adapter.MovieListFragAdapter
 import com.android.tutorial.couch_potato.model.Movie
 import com.android.tutorial.couch_potato.rest.RestClient
-import com.android.tutorial.couch_potato.util.MovieDelegate
+import com.android.tutorial.couch_potato.viewmodel.MovieDetailViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieListFragment : Fragment(), MovieDelegate {
+class MovieListFragment : Fragment() {
 
     private lateinit var adapter: MovieListFragAdapter
+    private lateinit var viewModel: MovieDetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,11 +28,15 @@ class MovieListFragment : Fragment(), MovieDelegate {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.frag_movie_list, container, false)
-        adapter = MovieListFragAdapter(this)
+        adapter = MovieListFragAdapter()
+        viewModel = MovieDetailViewModel()
         val rvMovies: RecyclerView = view.findViewById(R.id.rvLatestMovies)
-        setMovie("batman")
-        setMovie("frozen")
-        setMovie("harry-potter")
+        setMovie("batman-begins", "2005")
+        setMovie("enola", "2020")
+        setMovie("frozen", "2020")
+        setMovie("justice", "2021")
+        setMovie("wonder", "2020")
+        setMovie("shazam", "2019")
         rvMovies.adapter = adapter
         rvMovies.layoutManager =
             LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
@@ -39,13 +44,9 @@ class MovieListFragment : Fragment(), MovieDelegate {
         return view
     }
 
-    override fun onMovieDetailClicked(movie: Movie) {
-        Log.d("response", "click movie.........${movie.imdbID}")
-    }
-
-    private fun setMovie(title: String) {
+    private fun setMovie(title: String, year: String) {
         RestClient.getApiService()
-            .getByTitle(title, "full")
+            .getByTitle(title, year, "full")
             .enqueue(object : Callback<Movie> {
                 override fun onResponse(
                     call: Call<Movie>,

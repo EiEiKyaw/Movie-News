@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
         botNav.setOnNavigationItemSelectedListener {item ->
             val fragment : Fragment? = when(item.itemId){
-                R.id.menu_item_category -> CategoryFragment()
                 R.id.menu_item_latest -> MovieListFragment()
                 R.id.menu_item_history -> HistoryFragment()
                 else -> null

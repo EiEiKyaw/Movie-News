@@ -1,7 +1,7 @@
-package com.android.tutorial.couch_potato.util
+package com.android.tutorial.couch_potato.listener
 
 import com.android.tutorial.couch_potato.model.Movie
 
-interface MovieDelegate {
+interface MovieListener {
     fun onMovieDetailClicked(movie: Movie)
 }

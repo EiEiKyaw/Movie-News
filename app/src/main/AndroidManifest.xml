@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Couch_Potato"
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:fullBackupContent="true">
         <activity android:name=".activity.MainActivity">
             <intent-filter>
@@ -19,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.MovieDetailActivity" />
     </application>
 
 </manifest>

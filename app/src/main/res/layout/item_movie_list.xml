@@ -12,7 +12,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="6dp"
-        android:backgroundTint="#494949"
+        android:backgroundTint="@color/bg_poster"
         app:cardCornerRadius="2dp"
         app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,25 +29,15 @@
                 android:id="@+id/ivMoviePoster"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/lb_movie_new_image"
+                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic"
-                android:contentDescription="@string/lb_movie_new_image" />
-
-            <View
-                android:id="@+id/horizonDivider"
-                android:layout_width="0dp"
-                android:layout_height="0.5dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="28dp"
-                android:background="#000000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintVertical_bias="0.0"
+                tools:srcCompat="@drawable/sample_poster" />
 
             <TextView
                 android:id="@+id/tvMovieTitle"
@@ -58,8 +48,9 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/lb_sample_title"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/horizonDivider"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -68,27 +59,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
                 android:drawablePadding="4dp"
-                android:text="@string/lb_1"
-                android:textColor="#FFFFFF"
+                app:drawableStartCompat="@drawable/ic_favorite"
                 app:drawableTint="#FFFFFF"
-                app:layout_constraintStart_toStartOf="@id/horizonDivider"
-                app:layout_constraintTop_toBottomOf="@id/horizonDivider"
-                app:drawableStartCompat="@drawable/ic_favorite" />
+                app:layout_constraintEnd_toStartOf="@+id/tvBookmark"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvBookmark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="4dp"
-                android:textColor="#FFFFFF"
+                app:drawableStartCompat="@drawable/ic_bookmark"
                 app:drawableTint="#FFFFFF"
-                app:layout_constraintEnd_toStartOf="@+id/tvShare"
-                app:layout_constraintStart_toEndOf="@+id/tvFavorite"
-                app:layout_constraintTop_toTopOf="@+id/tvFavorite"
-                app:drawableStartCompat="@drawable/ic_bookmark" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvFavorite" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/tvShare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,7 +85,8 @@
                 app:drawableTint="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="@id/horizonDivider"
                 app:layout_constraintTop_toTopOf="@+id/tvFavorite"
-                app:drawableStartCompat="@drawable/ic_share" />
+                app:layout_constraintBottom_toBottomOf="@id/tvFavorite"
+                app:drawableStartCompat="@drawable/ic_share" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

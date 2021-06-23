@@ -13,6 +13,13 @@ interface ApiService {
         @Query("plot") plot: String
     ): Call<Movie>
 
+    @GET("?")
+    fun getByTitle(
+        @Query("t") title: String,
+        @Query("y") year: String,
+        @Query("plot") plot: String
+    ): Call<Movie>
+
     @GET("")
     fun getById(
         @Query("i") id: String,

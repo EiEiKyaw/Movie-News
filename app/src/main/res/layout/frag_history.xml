@@ -9,11 +9,13 @@
         android:id="@+id/tlHistory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/bg_nav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIconTint="@color/nav_icon_color_checked"
-        app:tabIndicatorColor="@color/nav_icon_color_checked">
+        app:tabIconTint="#FFFFFF"
+        app:tabIndicatorColor="#FFFFFF"
+        app:tabIndicatorHeight="4dp">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_bookmark"

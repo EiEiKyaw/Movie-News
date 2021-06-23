@@ -1,19 +1,17 @@
 package com.android.tutorial.couch_potato.adapter
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
+import com.android.tutorial.couch_potato.activity.MovieDetailActivity
 import com.android.tutorial.couch_potato.model.Movie
-import com.android.tutorial.couch_potato.util.MovieDelegate
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_movie_list.view.*
+import kotlinx.android.synthetic.main.item_movie_detail.view.*
 
-class MovieListFragAdapter(
-    private val delegate: MovieDelegate
-) : RecyclerView.Adapter<MovieListFragAdapter.MyViewHolder>() {
+class MovieListFragAdapter : RecyclerView.Adapter<MovieListFragAdapter.MyViewHolder>() {
 
     private val movieList = mutableListOf<Movie>()
 
@@ -26,7 +24,6 @@ class MovieListFragAdapter(
         return MyViewHolder(view)
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val movie = movieList[position]
         holder.itemView.apply {
@@ -34,11 +31,24 @@ class MovieListFragAdapter(
                 .load(movie.posterImg)
                 .error(R.drawable.sample_poster)
                 .into(ivMoviePoster)
-            tvMovieTitle.text = "${movie.title} - ${movie.year}"
+            tvMovieTitle.text = movie.title
+        }
 
-            setOnClickListener {
-                delegate.onMovieDetailClicked(movie)
-            }
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, MovieDetailActivity::class.java)
+
+            intent.putExtra("moviePoster", movie.posterImg)
+            intent.putExtra("movieTitle", movie.title)
+            intent.putExtra("releasedDate", movie.releasedYear)
+            intent.putExtra("description", movie.plot)
+            intent.putExtra("imdbRating", movie.imdbRating)
+            intent.putExtra("imdbVotes", movie.imdbVotes)
+            intent.putExtra("awards", movie.awards)
+            intent.putExtra("actors", movie.actors)
+            intent.putExtra("genre", movie.category)
+            context.startActivity(intent)
+
         }
     }
 

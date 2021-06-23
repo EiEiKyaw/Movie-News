@@ -25,7 +25,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:adjustViewBounds="true"
-                    android:background="#5A5A5A"
+                    android:background="@color/bg_poster"
                     android:contentDescription="@string/lb_banner_image"
                     android:scaleType="fitCenter"
                     app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,59 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ivMoviePoster" />
 
-                <View
+                <TextView
+                    android:id="@+id/lbReleasedDate"
+                    style="@style/movieDetail.note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/lb_released"
+                    app:layout_constraintStart_toStartOf="@id/tvMovieTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
+
+                <TextView
+                    android:id="@+id/tvReleasedDate"
+                    style="@style/movieDetail.note.value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/sample_date"
+                    app:layout_constraintStart_toEndOf="@id/lbReleasedDate"
+                    app:layout_constraintTop_toTopOf="@id/lbReleasedDate" />
+
+                <TextView
+                    android:id="@+id/lbRating"
+                    style="@style/movieDetail.note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/lb_rating"
+                    app:layout_constraintStart_toStartOf="@id/tvMovieTitle"
+                    app:layout_constraintTop_toBottomOf="@id/lbReleasedDate" />
+
+                <TextView
+                    android:id="@+id/tvRating"
+                    style="@style/movieDetail.note.value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sample_rating"
+                    app:layout_constraintStart_toStartOf="@id/tvReleasedDate"
+                    app:layout_constraintTop_toTopOf="@id/lbRating" />
+
+                <TextView
+                    android:id="@+id/tvVotes"
+                    style="@style/movieDetail.note.value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="#048F04"
+                    android:text="(84,00 votes)"
+                    app:layout_constraintStart_toEndOf="@id/tvRating"
+                    app:layout_constraintTop_toTopOf="@id/lbRating"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <!--<View
                     android:id="@+id/horizonDivider"
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
@@ -55,22 +107,7 @@
                     android:background="#000000"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
-
-                <TextView
-                    android:id="@+id/lbDescription"
-                    style="@style/movieDetail.title.sub"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/lb_description"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/horizonDivider" />
+                    app:layout_constraintTop_toBottomOf="@id/tvRating" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -89,33 +126,128 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvDescription"
-                style="@style/movieDetail"
-                android:layout_width="match_parent"
+                android:id="@+id/lbDescription"
+                style="@style/movieDetail.title.sub"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/lb_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                style="@style/movieDetail.description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="12dp"
                 android:text="@string/sample_description_value"
                 android:textAlignment="textStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/lbDescription" />
+
+            <TextView
+                android:id="@+id/lbActors"
+                style="@style/movieDetail.title.sub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/lb_actors"
+                app:layout_constraintEnd_toEndOf="@id/tvDescription"
+                app:layout_constraintStart_toStartOf="@id/tvDescription"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+            <TextView
+                android:id="@+id/tvActors"
+                style="@style/movieDetail.description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/sample_actors"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@id/lbActors"
+                app:layout_constraintStart_toStartOf="@id/tvDescription"
+                app:layout_constraintEnd_toEndOf="@+id/tvDescription"/>
+
+            <TextView
+                android:id="@+id/lbGenre"
+                style="@style/movieDetail.title.sub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/lb_category"
+                app:layout_constraintEnd_toEndOf="@id/tvDescription"
+                app:layout_constraintStart_toStartOf="@id/tvDescription"
+                app:layout_constraintTop_toBottomOf="@+id/tvActors" />
+
+            <TextView
+                android:id="@+id/tvGenre"
+                style="@style/movieDetail.description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/sample_genre"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@id/lbGenre"
+                app:layout_constraintStart_toStartOf="@id/tvDescription"
+                app:layout_constraintEnd_toEndOf="@+id/tvDescription"/>
+
+            <TextView
+                android:id="@+id/lbAwards"
+                style="@style/movieDetail.title.sub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/lb_awards"
+                app:layout_constraintEnd_toEndOf="@id/tvDescription"
+                app:layout_constraintStart_toStartOf="@id/tvDescription"
+                app:layout_constraintTop_toBottomOf="@+id/tvGenre" />
+
+            <TextView
+                android:id="@+id/tvAwards"
+                style="@style/movieDetail.description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/sample_awards"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@id/lbAwards"
+                app:layout_constraintStart_toStartOf="@id/tvDescription"
+                app:layout_constraintEnd_toEndOf="@+id/tvDescription"/>
 
             <TextView
                 android:id="@+id/lbViewLinks"
                 style="@style/movieDetail.title.sub"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
                 android:text="@string/lb_view_links"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+                app:layout_constraintEnd_toEndOf="@id/tvDescription"
+                app:layout_constraintStart_toStartOf="@id/tvDescription"
+                app:layout_constraintTop_toBottomOf="@+id/tvAwards" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <TextView
+                android:id="@+id/tvViewLink"
+                style="@style/movieDetail.link"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/lb_sample_view_link"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@id/lbViewLinks"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvDescription"
+                app:layout_constraintEnd_toEndOf="@+id/tvDescription"/>
+
+            <!--<androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/containerLinks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,7 +263,7 @@
                 android:background="#FFFFFF"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/containerLinks" />
+                app:layout_constraintTop_toBottomOf="@id/containerLinks" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

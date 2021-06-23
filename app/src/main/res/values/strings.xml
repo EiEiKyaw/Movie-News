@@ -16,31 +16,11 @@
         Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
         Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
         Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
-        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
-        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
-        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
-        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
-        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
-        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
-        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
-        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
-        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
-        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
-        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
-        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
-        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
-        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
-        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
-        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
-        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
-        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
-        Lucy Neal is thrown for a loop when she is accused of being too inhibited by her ex-boyfriend. In an effort to prove him wrong,
-        Lucy creates a rather wild to-do list that sends her on a whirlwind and surprising journey of self-discovery, friendship, and new love.
     </string>
     <string name="lb_view_links"><u>View Links</u></string>
     <string name="lb_sample_view_link"><u>https://www.youtube.com/watch?v=Zi4LMpSDccc</u></string>
     <string name="lb_movie_new_image">Movie_New_Image</string>
-    <string name="lb_sample_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
+    <string name="lb_sample_title">Enola Holmes</string>
     <string name="lb_1">1</string>
     <string name="nav_lb_categories">Categories</string>
     <string name="nav_lb_latest">Latest</string>
@@ -48,4 +28,14 @@
     <string name="lb_category_image">Category_Image</string>
     <string name="lb_sample_drama">Drama</string>
     <string name="lb_categories"><u>Categories</u></string>
+    <string name="sample_date">25 Jan 2021</string>
+    <string name="lb_released">Released</string>
+    <string name="lb_rating">Rating</string>
+    <string name="sample_rating">8.1</string>
+    <string name="lb_awards"><u>Awards</u></string>
+    <string name="sample_awards"><![CDATA[2 wins & 10 nominations]]></string>
+    <string name="lb_actors"><u>Actors</u></string>
+    <string name="sample_actors">Millie Bobby Brown, Henry Cavill, Sam Claflin</string>
+    <string name="lb_category"><u>Category</u></string>
+    <string name="sample_genre">Action, Adventure, Crime</string>
 </resources>
