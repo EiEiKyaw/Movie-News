@@ -33,14 +33,10 @@ class HistoryFavoriteFragment : Fragment() {
         adapter = FavoriteMovieListAdapter()
         viewModel = MovieDetailViewModel()
         val rvMovies: RecyclerView = view.findViewById(R.id.rvFavoriteMovies)
-        val collection = FirebaseFirestore.getInstance().collection("favorite-movies")
-        collection.get().addOnCompleteListener {
+        FirebaseFirestore.getInstance().collection("favorite-movies").get().addOnCompleteListener {
             if (it.isSuccessful) {
-                var count = 0
                 for (document in it.result!!) {
                     if (document.data.getValue("isFavorite") == true) {
-                        count++
-                        Log.d("favresponse", "${count}........true........${document.data.getValue("imdbId")}")
                         viewModel.getById(document.data.getValue("imdbId").toString())
                         viewModel.movieById.observe(viewLifecycleOwner, Observer { movie ->
                                 adapter.setNewData(movie)

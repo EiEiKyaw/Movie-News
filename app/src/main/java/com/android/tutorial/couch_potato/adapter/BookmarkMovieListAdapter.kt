@@ -9,9 +9,7 @@ import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.activity.MovieDetailActivity
 import com.android.tutorial.couch_potato.model.Movie
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_movie_detail.view.ivMoviePoster
-import kotlinx.android.synthetic.main.item_movie_detail.view.tvMovieTitle
-import kotlinx.android.synthetic.main.item_movie_list.view.*
+import kotlinx.android.synthetic.main.item_movie_detail.view.*
 
 class BookmarkMovieListAdapter() :
     RecyclerView.Adapter<BookmarkMovieListAdapter.MyViewHolder>() {
@@ -54,8 +52,6 @@ class BookmarkMovieListAdapter() :
             intent.putExtra("genre", movie.category)
 
             intent.putExtra("imdbId", movie.imdbID)
-            intent.putExtra("isFavorite", holder.itemView.ivFavorite.isSelected)
-            intent.putExtra("isBookmark", holder.itemView.ivBookmark.isSelected)
             context.startActivity(intent)
         }
     }
@@ -71,7 +67,8 @@ class BookmarkMovieListAdapter() :
     }
 
     fun setNewData(movie: Movie) {
-        movieList.add(movie)
+        if (!movieList.contains(movie))
+            movieList.add(movie)
         notifyItemInserted(movieList.size - 1)
     }
 

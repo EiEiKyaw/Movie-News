@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
@@ -32,46 +33,22 @@ class HistoryBookmarkFragment : Fragment() {
         adapter = BookmarkMovieListAdapter()
         viewModel = MovieDetailViewModel()
         val rvMovies: RecyclerView = view.findViewById(R.id.rvBookmarkMovies)
-        getBookmarkMovies()
-        rvMovies.adapter = adapter
-        rvMovies.layoutManager =
-            LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
-        return view
-    }
-
-    private fun getBookmarkMovies() {
-        val collection = FirebaseFirestore.getInstance().collection("bookmark-movies")
-        collection.get().addOnCompleteListener {
+        FirebaseFirestore.getInstance().collection("bookmark-movies").get().addOnCompleteListener {
             if (it.isSuccessful) {
                 for (document in it.result!!) {
                     if (document.data.getValue("isBookmark") == true) {
-                        getMovie(document.data.getValue("imdbId").toString())
+                        viewModel.getById(document.data.getValue("imdbId").toString())
+                        viewModel.movieById.observe(viewLifecycleOwner, Observer { movie ->
+                            adapter.setNewData(movie)
+                        })
                     }
                 }
             }
         }
-    }
-
-    private fun getMovie(imdbId: String) {
-        RestClient.getApiService()
-            .getById(imdbId, "full")
-            .enqueue(object : Callback<Movie> {
-                override fun onResponse(
-                    call: Call<Movie>,
-                    response: Response<Movie>
-                ) {
-                    if (response.isSuccessful) {
-                        response.body()?.let { movie ->
-                            adapter.setNewData(movie)
-                            Log.d("bmresponse", "movie............." + movie.title)
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<Movie>, t: Throwable) {
-                    Log.d("bmresponse", "......fail")
-                }
-            })
+        rvMovies.adapter = adapter
+        rvMovies.layoutManager =
+            LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+        return view
     }
 
 }
