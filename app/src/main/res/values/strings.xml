@@ -38,4 +38,6 @@
     <string name="sample_actors">Millie Bobby Brown, Henry Cavill, Sam Claflin</string>
     <string name="lb_category"><u>Category</u></string>
     <string name="sample_genre">Action, Adventure, Crime</string>
+    <string name="lb_runtime"><u>Runtime</u></string>
+    <string name="lb_sample_runtime">43 min</string>
 </resources>

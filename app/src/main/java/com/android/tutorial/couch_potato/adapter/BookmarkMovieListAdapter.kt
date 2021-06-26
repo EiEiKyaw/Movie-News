@@ -7,11 +7,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.activity.MovieDetailActivity
+import com.android.tutorial.couch_potato.listener.MovieListener
 import com.android.tutorial.couch_potato.model.Movie
+import com.android.tutorial.couch_potato.model.MovieHistory
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_movie_detail.view.*
+import kotlinx.android.synthetic.main.item_movie_detail.view.ivMoviePoster
+import kotlinx.android.synthetic.main.item_movie_detail.view.tvMovieTitle
+import kotlinx.android.synthetic.main.item_movie_list.view.*
 
-class BookmarkMovieListAdapter() :
+class BookmarkMovieListAdapter(val listener: MovieListener) :
     RecyclerView.Adapter<BookmarkMovieListAdapter.MyViewHolder>() {
 
     private val movieList = mutableListOf<Movie>()
@@ -37,6 +41,19 @@ class BookmarkMovieListAdapter() :
             tvMovieTitle.text = movie.title
         }
 
+        holder.itemView.ivBookmark.isSelected = true
+        var isBookmark = true
+        holder.itemView.ivBookmark.setOnClickListener {
+            isBookmark = !isBookmark
+            holder.itemView.ivBookmark.isSelected = isBookmark
+            val movieHistory = MovieHistory(
+                imdbId = movie.imdbID,
+                isFavorite = false,
+                isBookmark = isBookmark
+            )
+            listener.onBookmarkClicked(movieHistory)
+        }
+
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, MovieDetailActivity::class.java)
@@ -50,6 +67,7 @@ class BookmarkMovieListAdapter() :
             intent.putExtra("awards", movie.awards)
             intent.putExtra("actors", movie.actors)
             intent.putExtra("genre", movie.category)
+            intent.putExtra("runtime", movie.runtime)
 
             intent.putExtra("imdbId", movie.imdbID)
             context.startActivity(intent)

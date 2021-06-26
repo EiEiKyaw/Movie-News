@@ -11,32 +11,8 @@ import retrofit2.Response
 
 class MovieDetailViewModel : ViewModel() {
 
-    val isLoading = MutableLiveData<Boolean>()
     val movieByTitle = MutableLiveData<Movie>()
     val movieById = MutableLiveData<Movie>()
-
-    fun getByTitle(title: String){
-        RestClient.getApiService()
-            .getByTitle(title, "full")
-            .enqueue(object : Callback<Movie> {
-                override fun onResponse(
-                    call: Call<Movie>,
-                    response: Response<Movie>
-                ) {
-                    if(response.isSuccessful){
-                        Log.d("response", "......success")
-                        response.body().let {
-                            movieByTitle.value =  it
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<Movie>, t: Throwable) {
-                    Log.d("response", "......fail")
-                }
-
-            })
-    }
 
     fun getByTitle(title: String, year: String){
         RestClient.getApiService()
@@ -47,7 +23,6 @@ class MovieDetailViewModel : ViewModel() {
                     response: Response<Movie>
                 ) {
                     if(response.isSuccessful){
-                        Log.d("response", "......success")
                         response.body().let {
                             movieByTitle.value =  it
                         }
@@ -70,7 +45,6 @@ class MovieDetailViewModel : ViewModel() {
                     response: Response<Movie>
                 ) {
                     if(response.isSuccessful){
-                        Log.d("response", "......success")
                         response.body().let {
                             movieById.value =  it
                         }

@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.adapter.MovieListFragAdapter
 import com.android.tutorial.couch_potato.listener.MovieListener
 import com.android.tutorial.couch_potato.model.MovieHistory
+import com.android.tutorial.couch_potato.util.ManageMovieHistory
 import com.android.tutorial.couch_potato.viewmodel.MovieDetailViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -44,95 +44,16 @@ class MovieListFragment : Fragment(), MovieListener {
 
     private fun setMovie(title: String, year: String) {
         viewModel.getByTitle(title, year)
-        viewModel.movieByTitle.observe(viewLifecycleOwner, Observer { movie ->
+        viewModel.movieByTitle.observe(viewLifecycleOwner, { movie ->
             adapter.setNewData(movie)
         })
     }
 
     override fun onFavoriteClicked(movie: MovieHistory) {
-        manageMovieHistory(movie, "favorite-movies")
+        ManageMovieHistory.manage(movie, "favorite-movies")
     }
 
     override fun onBookmarkClicked(movie: MovieHistory) {
-        manageBookmarkMovie(movie)
-    }
-
-    private fun manageFavoriteMovie(movie: MovieHistory) {
-        val collection = FirebaseFirestore.getInstance().collection("favorite-movies")
-        val data: MutableMap<String, Any> = HashMap()
-        data["imdbId"] = movie.imdbId
-        data["isFavorite"] = movie.isFavorite
-        var isValid = false
-        var documentId = ""
-        collection.get().addOnCompleteListener {
-            if (it.isSuccessful) {
-                for (document in it.result!!) {
-                    if (document.data.getValue("imdbId").equals(movie.imdbId)) {
-                        isValid = true
-                        documentId = document.id
-                    }
-                }
-                if (!isValid) {
-                    collection.add(data)
-                } else {
-                    collection.document(documentId).update("isFavorite", movie.isFavorite)
-                }
-            }
-        }
-    }
-
-    private fun manageBookmarkMovie(movie: MovieHistory) {
-        val collection = FirebaseFirestore.getInstance().collection("bookmark-movies")
-        val data: MutableMap<String, Any> = HashMap()
-        data["imdbId"] = movie.imdbId
-        data["isBookmark"] = movie.isFavorite
-        var isValid = false
-        var documentId = ""
-        collection.get().addOnCompleteListener {
-            if (it.isSuccessful) {
-                for (document in it.result!!) {
-                    if (document.data.getValue("imdbId").equals(movie.imdbId)) {
-                        isValid = true
-                        documentId = document.id
-                    }
-                }
-                if (!isValid) {
-                    collection.add(data)
-                } else {
-                    collection.document(documentId).update("isBookmark", movie.isBookmark)
-                }
-            }
-        }
-    }
-
-
-    private fun manageMovieHistory(movie: MovieHistory, path: String) {
-        val collection = FirebaseFirestore.getInstance().collection(path)
-        val data: MutableMap<String, Any> = HashMap()
-        data["imdbId"] = movie.imdbId
-        if (path.contains("favorite"))
-            data["isFavorite"] = movie.isFavorite
-        else if (path.contains("bookmark"))
-            data["isBookmark"] = movie.isBookmark
-        var isValid = false
-        var documentId = ""
-        collection.get().addOnCompleteListener {
-            if (it.isSuccessful) {
-                for (document in it.result!!) {
-                    if (document.data.getValue("imdbId").equals(movie.imdbId)) {
-                        isValid = true
-                        documentId = document.id
-                    }
-                }
-                if (!isValid) {
-                    collection.add(data)
-                } else {
-                    if (path.contains("favorite"))
-                        collection.document(documentId).update("isFavorite", movie.isFavorite)
-                    else if (path.contains("bookmark"))
-                        collection.document(documentId).update("isBookmark", movie.isBookmark)
-                }
-            }
-        }
+        ManageMovieHistory.manage(movie, "bookmark-movies")
     }
 }

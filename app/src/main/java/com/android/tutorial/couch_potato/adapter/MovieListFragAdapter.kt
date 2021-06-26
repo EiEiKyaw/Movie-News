@@ -78,6 +78,7 @@ class MovieListFragAdapter(val listener: MovieListener) :
             intent.putExtra("awards", movie.awards)
             intent.putExtra("actors", movie.actors)
             intent.putExtra("genre", movie.category)
+            intent.putExtra("runtime", movie.runtime)
 
             intent.putExtra("imdbId", movie.imdbID)
             intent.putExtra("isFavorite", holder.itemView.ivFavorite.isSelected)

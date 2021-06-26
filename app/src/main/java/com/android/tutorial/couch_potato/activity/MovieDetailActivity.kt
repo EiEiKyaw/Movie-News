@@ -28,6 +28,7 @@ class MovieDetailActivity : AppCompatActivity() {
         val awards = intent.getStringExtra("awards") ?: ""
         val actors = intent.getStringExtra("actors") ?: ""
         val genre = intent.getStringExtra("genre") ?: ""
+        val runtime = intent.getStringExtra("runtime") ?: ""
 
         Glide.with(this)
             .load(moviePoster)
@@ -42,6 +43,7 @@ class MovieDetailActivity : AppCompatActivity() {
         tvAwards.text = awards
         tvActors.text = actors
         tvGenre.text = genre
+        tvRuntime.text = runtime
 
         tvViewLink.setOnClickListener {
             val uri = Uri.parse(moviePoster) // missing 'http://' will cause crashed

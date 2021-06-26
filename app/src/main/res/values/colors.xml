@@ -12,5 +12,6 @@
     <color name="bg_poster">#292929</color>
     <color name="bg_nav">#D67208</color>
     <color name="bg_tab">#DF9B52</color>
+    <color name="bg_layout">#E1A15E</color>
 </resources>
 
