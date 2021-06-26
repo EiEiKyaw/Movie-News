@@ -23,7 +23,7 @@ class FavoriteMovieListAdapter() :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_history_movie, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_fav_movie, parent, false)
         return MyViewHolder(view)
     }
 

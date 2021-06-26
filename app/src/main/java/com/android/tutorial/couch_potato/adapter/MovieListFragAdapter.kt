@@ -97,7 +97,8 @@ class MovieListFragAdapter(val listener: MovieListener) :
     }
 
     fun setNewData(movie: Movie) {
-        movieList.add(movie)
+        if (!movieList.contains(movie))
+            movieList.add(movie)
         notifyItemInserted(movieList.size - 1)
     }
 

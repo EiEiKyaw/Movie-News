@@ -11,13 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.adapter.BookmarkMovieListAdapter
-import com.android.tutorial.couch_potato.model.Movie
-import com.android.tutorial.couch_potato.rest.RestClient
 import com.android.tutorial.couch_potato.viewmodel.MovieDetailViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class HistoryBookmarkFragment : Fragment() {
 
@@ -35,6 +30,7 @@ class HistoryBookmarkFragment : Fragment() {
         val rvMovies: RecyclerView = view.findViewById(R.id.rvBookmarkMovies)
         FirebaseFirestore.getInstance().collection("bookmark-movies").get().addOnCompleteListener {
             if (it.isSuccessful) {
+                Log.d("response", "bookmark movie list size............." + it.result!!.size())
                 for (document in it.result!!) {
                     if (document.data.getValue("isBookmark") == true) {
                         viewModel.getById(document.data.getValue("imdbId").toString())

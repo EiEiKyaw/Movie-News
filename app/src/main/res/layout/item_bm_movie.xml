@@ -55,39 +55,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <!--<TextView
-                android:id="@+id/tvFavorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBookmark"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
-                android:drawablePadding="4dp"
-                app:drawableStartCompat="@drawable/ic_favorite"
-                app:drawableTint="#FFFFFF"
-                app:layout_constraintEnd_toStartOf="@+id/tvBookmark"
-                app:layout_constraintTop_toTopOf="parent" />-->
-
-            <!--<TextView
-                android:id="@+id/tvBookmark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="4dp"
-                app:drawableStartCompat="@drawable/ic_bookmark"
-                app:drawableTint="#FFFFFF"
+                android:scaleType="center"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:srcCompat="@drawable/ic_bookmark"
+                app:tint="@color/tint_fav_bm_icon"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvFavorite" />-->
-
-            <!--<TextView
-                android:id="@+id/tvShare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="4dp"
-                android:textColor="#FFFFFF"
-                app:drawableTint="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="@id/horizonDivider"
-                app:layout_constraintTop_toTopOf="@+id/tvFavorite"
-                app:layout_constraintBottom_toBottomOf="@id/tvFavorite"
-                app:drawableStartCompat="@drawable/ic_share" />-->
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

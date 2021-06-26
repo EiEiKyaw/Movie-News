@@ -1,24 +1,19 @@
 package com.android.tutorial.couch_potato.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.adapter.MovieListFragAdapter
 import com.android.tutorial.couch_potato.listener.MovieListener
-import com.android.tutorial.couch_potato.model.Movie
 import com.android.tutorial.couch_potato.model.MovieHistory
-import com.android.tutorial.couch_potato.rest.RestClient
 import com.android.tutorial.couch_potato.viewmodel.MovieDetailViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MovieListFragment : Fragment(), MovieListener {
 
@@ -48,28 +43,14 @@ class MovieListFragment : Fragment(), MovieListener {
     }
 
     private fun setMovie(title: String, year: String) {
-        RestClient.getApiService()
-            .getByTitle(title, year, "full")
-            .enqueue(object : Callback<Movie> {
-                override fun onResponse(
-                    call: Call<Movie>,
-                    response: Response<Movie>
-                ) {
-                    if (response.isSuccessful) {
-                        response.body()?.let { movie ->
-                            adapter.setNewData(movie)
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<Movie>, t: Throwable) {
-                    Log.d("response", "......fail")
-                }
-            })
+        viewModel.getByTitle(title, year)
+        viewModel.movieByTitle.observe(viewLifecycleOwner, Observer { movie ->
+            adapter.setNewData(movie)
+        })
     }
 
     override fun onFavoriteClicked(movie: MovieHistory) {
-        manageFavoriteMovie(movie)
+        manageMovieHistory(movie, "favorite-movies")
     }
 
     override fun onBookmarkClicked(movie: MovieHistory) {
@@ -124,4 +105,34 @@ class MovieListFragment : Fragment(), MovieListener {
         }
     }
 
+
+    private fun manageMovieHistory(movie: MovieHistory, path: String) {
+        val collection = FirebaseFirestore.getInstance().collection(path)
+        val data: MutableMap<String, Any> = HashMap()
+        data["imdbId"] = movie.imdbId
+        if (path.contains("favorite"))
+            data["isFavorite"] = movie.isFavorite
+        else if (path.contains("bookmark"))
+            data["isBookmark"] = movie.isBookmark
+        var isValid = false
+        var documentId = ""
+        collection.get().addOnCompleteListener {
+            if (it.isSuccessful) {
+                for (document in it.result!!) {
+                    if (document.data.getValue("imdbId").equals(movie.imdbId)) {
+                        isValid = true
+                        documentId = document.id
+                    }
+                }
+                if (!isValid) {
+                    collection.add(data)
+                } else {
+                    if (path.contains("favorite"))
+                        collection.document(documentId).update("isFavorite", movie.isFavorite)
+                    else if (path.contains("bookmark"))
+                        collection.document(documentId).update("isBookmark", movie.isBookmark)
+                }
+            }
+        }
+    }
 }
