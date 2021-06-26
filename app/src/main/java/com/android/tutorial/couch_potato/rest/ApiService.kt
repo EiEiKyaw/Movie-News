@@ -20,7 +20,7 @@ interface ApiService {
         @Query("plot") plot: String
     ): Call<Movie>
 
-    @GET("")
+    @GET("?")
     fun getById(
         @Query("i") id: String,
         @Query("plot") plot: String

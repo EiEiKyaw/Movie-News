@@ -10,9 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.adapter.BookmarkMovieListAdapter
-import com.android.tutorial.couch_potato.listener.MovieListener
 import com.android.tutorial.couch_potato.model.Movie
-import com.android.tutorial.couch_potato.model.MovieHistory
 import com.android.tutorial.couch_potato.rest.RestClient
 import com.android.tutorial.couch_potato.viewmodel.MovieDetailViewModel
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,7 +18,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HistoryBookmarkFragment : Fragment(), MovieListener {
+class HistoryBookmarkFragment : Fragment() {
 
     private lateinit var viewModel: MovieDetailViewModel
     private lateinit var adapter: BookmarkMovieListAdapter
@@ -65,22 +63,15 @@ class HistoryBookmarkFragment : Fragment(), MovieListener {
                     if (response.isSuccessful) {
                         response.body()?.let { movie ->
                             adapter.setNewData(movie)
-                            Log.d("bm response", "movie............." + movie.title)
+                            Log.d("bmresponse", "movie............." + movie.title)
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<Movie>, t: Throwable) {
-                    Log.d("bm response", "......fail")
+                    Log.d("bmresponse", "......fail")
                 }
             })
     }
 
-    override fun onFavoriteClicked(movie: MovieHistory) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onBookmarkClicked(movie: MovieHistory) {
-        TODO("Not yet implemented")
-    }
 }
