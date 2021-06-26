@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.android.tutorial.couch_potato.R
-import com.android.tutorial.couch_potato.adapter.HistoryPagerAdapter
+import com.android.tutorial.couch_potato.adapter.HistoryPageAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.frag_history.view.*
 
@@ -18,7 +18,7 @@ class HistoryFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.frag_history, container, false)
 
-        val historyPagerAdapter = HistoryPagerAdapter(this)
+        val historyPagerAdapter = HistoryPageAdapter(this)
         view.vpHistory.adapter = historyPagerAdapter
 
         TabLayoutMediator(view.tlHistory, view.vpHistory) { tab, position ->

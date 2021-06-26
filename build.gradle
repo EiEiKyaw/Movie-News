@@ -29,7 +29,8 @@ buildscript {
             'espresso'           : '3.3.0',
 
             'location'           : '17.0.0',
-            'room'               : '2.3.0'
+            'room'               : '2.3.0',
+            'lifecycle'          : '2.2.0'
     ]
 
     repositories {

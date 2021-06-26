@@ -56,10 +56,8 @@ class MovieListFragment : Fragment(), MovieListener {
                     response: Response<Movie>
                 ) {
                     if (response.isSuccessful) {
-                        Log.d("response", "......success")
                         response.body()?.let { movie ->
                             adapter.setNewData(movie)
-                            Log.d("response", "movie............." + movie.title)
                         }
                     }
                 }

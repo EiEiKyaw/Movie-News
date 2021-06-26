@@ -6,7 +6,7 @@ import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.fragment.HistoryBookmarkFragment
 import com.android.tutorial.couch_potato.fragment.HistoryFavoriteFragment
 
-class HistoryPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class HistoryPageAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     val tabTitles = listOf<Int>(
         R.drawable.ic_bookmark,

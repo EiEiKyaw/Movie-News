@@ -12,7 +12,8 @@ import retrofit2.Response
 class MovieDetailViewModel : ViewModel() {
 
     val isLoading = MutableLiveData<Boolean>()
-    val movie = MutableLiveData<Movie>()
+    val movieByTitle = MutableLiveData<Movie>()
+    val movieById = MutableLiveData<Movie>()
 
     fun getByTitle(title: String){
         RestClient.getApiService()
@@ -25,7 +26,7 @@ class MovieDetailViewModel : ViewModel() {
                     if(response.isSuccessful){
                         Log.d("response", "......success")
                         response.body().let {
-                            movie.value =  it
+                            movieByTitle.value =  it
                         }
                     }
                 }
@@ -48,7 +49,7 @@ class MovieDetailViewModel : ViewModel() {
                     if(response.isSuccessful){
                         Log.d("response", "......success")
                         response.body().let {
-                            movie.value =  it
+                            movieById.value =  it
                         }
                     }
                 }
