@@ -37,4 +37,27 @@ class MovieDetailViewModel : ViewModel() {
             })
     }
 
+    fun getById(imdbId: String){
+        RestClient.getApiService()
+            .getById(imdbId, "full")
+            .enqueue(object : Callback<Movie> {
+                override fun onResponse(
+                    call: Call<Movie>,
+                    response: Response<Movie>
+                ) {
+                    if(response.isSuccessful){
+                        Log.d("response", "......success")
+                        response.body().let {
+                            movie.value =  it
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<Movie>, t: Throwable) {
+                    Log.d("response", "......fail")
+                }
+
+            })
+    }
+
 }

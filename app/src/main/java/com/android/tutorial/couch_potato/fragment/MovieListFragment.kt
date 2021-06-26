@@ -15,7 +15,6 @@ import com.android.tutorial.couch_potato.model.Movie
 import com.android.tutorial.couch_potato.model.MovieHistory
 import com.android.tutorial.couch_potato.rest.RestClient
 import com.android.tutorial.couch_potato.viewmodel.MovieDetailViewModel
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import retrofit2.Call
 import retrofit2.Callback
@@ -72,37 +71,59 @@ class MovieListFragment : Fragment(), MovieListener {
     }
 
     override fun onFavoriteClicked(movie: MovieHistory) {
-        insertMovieHistory(movie)
+        manageFavoriteMovie(movie)
     }
 
     override fun onBookmarkClicked(movie: MovieHistory) {
+        manageBookmarkMovie(movie)
     }
 
-    private fun insertMovieHistory(movie: MovieHistory) {
+    private fun manageFavoriteMovie(movie: MovieHistory) {
         val collection = FirebaseFirestore.getInstance().collection("favorite-movies")
         val data: MutableMap<String, Any> = HashMap()
         data["imdbId"] = movie.imdbId
         data["isFavorite"] = movie.isFavorite
-        if (!isValidMovie(movie, collection))
-            collection.add(data).addOnSuccessListener {
-                Log.d(
-                    "click",
-                    "success added.......fav"
-                )
-            }
-    }
-
-    private fun isValidMovie(movie: MovieHistory, collection: CollectionReference): Boolean {
         var isValid = false
+        var documentId = ""
         collection.get().addOnCompleteListener {
             if (it.isSuccessful) {
                 for (document in it.result!!) {
                     if (document.data.getValue("imdbId").equals(movie.imdbId)) {
                         isValid = true
+                        documentId = document.id
                     }
+                }
+                if (!isValid) {
+                    collection.add(data)
+                } else {
+                    collection.document(documentId).update("isFavorite", movie.isFavorite)
                 }
             }
         }
-        return isValid
     }
+
+    private fun manageBookmarkMovie(movie: MovieHistory) {
+        val collection = FirebaseFirestore.getInstance().collection("bookmark-movies")
+        val data: MutableMap<String, Any> = HashMap()
+        data["imdbId"] = movie.imdbId
+        data["isBookmark"] = movie.isFavorite
+        var isValid = false
+        var documentId = ""
+        collection.get().addOnCompleteListener {
+            if (it.isSuccessful) {
+                for (document in it.result!!) {
+                    if (document.data.getValue("imdbId").equals(movie.imdbId)) {
+                        isValid = true
+                        documentId = document.id
+                    }
+                }
+                if (!isValid) {
+                    collection.add(data)
+                } else {
+                    collection.document(documentId).update("isBookmark", movie.isBookmark)
+                }
+            }
+        }
+    }
+
 }

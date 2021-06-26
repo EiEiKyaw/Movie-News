@@ -31,9 +31,9 @@ class RestClient {
                 .addInterceptor { chain ->
                     chain.proceed(chain.request())
                 }
-                .callTimeout(60, TimeUnit.SECONDS)
-                .connectTimeout(60, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
+                .callTimeout(120, TimeUnit.SECONDS)
+                .connectTimeout(120, TimeUnit.SECONDS)
+                .readTimeout(120, TimeUnit.SECONDS)
                 .build()
         }
 

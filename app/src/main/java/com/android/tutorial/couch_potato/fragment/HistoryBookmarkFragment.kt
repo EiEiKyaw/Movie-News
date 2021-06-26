@@ -9,8 +9,6 @@ import com.android.tutorial.couch_potato.R
 
 class HistoryBookmarkFragment: Fragment() {
 
-    private lateinit var movieHistoryDao: MovieHistoryDao
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
