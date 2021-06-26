@@ -10,14 +10,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.adapter.MovieListFragAdapter
+import com.android.tutorial.couch_potato.listener.MovieListener
 import com.android.tutorial.couch_potato.model.Movie
+import com.android.tutorial.couch_potato.model.MovieHistory
 import com.android.tutorial.couch_potato.rest.RestClient
 import com.android.tutorial.couch_potato.viewmodel.MovieDetailViewModel
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieListFragment : Fragment() {
+class MovieListFragment : Fragment(), MovieListener {
 
     private lateinit var adapter: MovieListFragAdapter
     private lateinit var viewModel: MovieDetailViewModel
@@ -28,7 +32,7 @@ class MovieListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.frag_movie_list, container, false)
-        adapter = MovieListFragAdapter()
+        adapter = MovieListFragAdapter(this)
         viewModel = MovieDetailViewModel()
         val rvMovies: RecyclerView = view.findViewById(R.id.rvLatestMovies)
         setMovie("batman-begins", "2005")
@@ -54,7 +58,7 @@ class MovieListFragment : Fragment() {
                 ) {
                     if (response.isSuccessful) {
                         Log.d("response", "......success")
-                        response.body()?.let {movie ->
+                        response.body()?.let { movie ->
                             adapter.setNewData(movie)
                             Log.d("response", "movie............." + movie.title)
                         }
@@ -67,4 +71,38 @@ class MovieListFragment : Fragment() {
             })
     }
 
+    override fun onFavoriteClicked(movie: MovieHistory) {
+        insertMovieHistory(movie)
+    }
+
+    override fun onBookmarkClicked(movie: MovieHistory) {
+    }
+
+    private fun insertMovieHistory(movie: MovieHistory) {
+        val collection = FirebaseFirestore.getInstance().collection("favorite-movies")
+        val data: MutableMap<String, Any> = HashMap()
+        data["imdbId"] = movie.imdbId
+        data["isFavorite"] = movie.isFavorite
+        if (!isValidMovie(movie, collection))
+            collection.add(data).addOnSuccessListener {
+                Log.d(
+                    "click",
+                    "success added.......fav"
+                )
+            }
+    }
+
+    private fun isValidMovie(movie: MovieHistory, collection: CollectionReference): Boolean {
+        var isValid = false
+        collection.get().addOnCompleteListener {
+            if (it.isSuccessful) {
+                for (document in it.result!!) {
+                    if (document.data.getValue("imdbId").equals(movie.imdbId)) {
+                        isValid = true
+                    }
+                }
+            }
+        }
+        return isValid
+    }
 }

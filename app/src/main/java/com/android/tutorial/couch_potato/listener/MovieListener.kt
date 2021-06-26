@@ -1,7 +1,8 @@
 package com.android.tutorial.couch_potato.listener
 
-import com.android.tutorial.couch_potato.model.Movie
+import com.android.tutorial.couch_potato.model.MovieHistory
 
 interface MovieListener {
-    fun onMovieDetailClicked(movie: Movie)
+    fun onFavoriteClicked(movie: MovieHistory)
+    fun onBookmarkClicked(movie: MovieHistory)
 }

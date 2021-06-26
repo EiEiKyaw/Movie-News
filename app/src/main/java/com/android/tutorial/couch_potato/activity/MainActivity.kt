@@ -1,12 +1,11 @@
 package com.android.tutorial.couch_potato.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.android.tutorial.couch_potato.fragment.CategoryFragment
+import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.fragment.HistoryFragment
 import com.android.tutorial.couch_potato.fragment.MovieListFragment
-import com.android.tutorial.couch_potato.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,15 +14,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         botNav.setOnNavigationItemSelectedListener {item ->
-            val fragment : Fragment? = when(item.itemId){
+            val fragment : Fragment = when(item.itemId){
                 R.id.menu_item_latest -> MovieListFragment()
                 R.id.menu_item_history -> HistoryFragment()
-                else -> null
+                else -> MovieListFragment()
             }
 
-            fragment?.let {
-                changeFragment(it)
-            }
+            changeFragment(fragment)
 
             true
         }

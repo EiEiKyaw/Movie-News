@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "179325865730",
+    "project_id": "movie-news-77261",
+    "storage_bucket": "movie-news-77261.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179325865730:android:38c59599d8c9cb60d1bc1b",
+        "android_client_info": {
+          "package_name": "com.android.tutorial.couch_potato"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179325865730-h0krltu8l32c9vmqjne0rvt9i89nr2h0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.tutorial.couch_potato",
+            "certificate_hash": "2010b07cbc312bc6bb5b6b85bf8d2c1ae8c02be3"
+          }
+        },
+        {
+          "client_id": "179325865730-g66efc711d7ghr54qc59cssgjt6q4d71.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd6fRTpGrUd9c0KaVz3iv4H21RD9YVB60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179325865730-g66efc711d7ghr54qc59cssgjt6q4d71.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

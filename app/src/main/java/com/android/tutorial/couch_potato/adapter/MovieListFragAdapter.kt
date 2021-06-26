@@ -7,11 +7,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.activity.MovieDetailActivity
+import com.android.tutorial.couch_potato.listener.MovieListener
 import com.android.tutorial.couch_potato.model.Movie
+import com.android.tutorial.couch_potato.model.MovieHistory
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_movie_detail.view.*
+import kotlinx.android.synthetic.main.item_movie_detail.view.ivMoviePoster
+import kotlinx.android.synthetic.main.item_movie_detail.view.tvMovieTitle
+import kotlinx.android.synthetic.main.item_movie_list.view.*
 
-class MovieListFragAdapter : RecyclerView.Adapter<MovieListFragAdapter.MyViewHolder>() {
+class MovieListFragAdapter(val listener: MovieListener) :
+    RecyclerView.Adapter<MovieListFragAdapter.MyViewHolder>() {
 
     private val movieList = mutableListOf<Movie>()
 
@@ -20,18 +25,44 @@ class MovieListFragAdapter : RecyclerView.Adapter<MovieListFragAdapter.MyViewHol
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie_list, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_movie_list, parent, false)
         return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val movie = movieList[position]
+
         holder.itemView.apply {
             Glide.with(context)
                 .load(movie.posterImg)
                 .error(R.drawable.sample_poster)
                 .into(ivMoviePoster)
             tvMovieTitle.text = movie.title
+        }
+
+        var isFavorite = holder.itemView.ivFavorite.isSelected
+        var isBookmark = holder.itemView.ivBookmark.isSelected
+        holder.itemView.ivFavorite.setOnClickListener {
+            isFavorite = !isFavorite
+            holder.itemView.ivFavorite.isSelected = isFavorite
+            val movieHistory = MovieHistory(
+                imdbId = movie.imdbID,
+                isFavorite = isFavorite,
+                isBookmark = isBookmark
+            )
+            listener.onFavoriteClicked(movieHistory)
+        }
+
+        holder.itemView.ivBookmark.setOnClickListener {
+            isBookmark = !isBookmark
+            holder.itemView.ivBookmark.isSelected = isBookmark
+            val movieHistory = MovieHistory(
+                imdbId = movie.imdbID,
+                isFavorite = isFavorite,
+                isBookmark = isBookmark
+            )
+            listener.onBookmarkClicked(movieHistory)
         }
 
         holder.itemView.setOnClickListener {
@@ -47,8 +78,11 @@ class MovieListFragAdapter : RecyclerView.Adapter<MovieListFragAdapter.MyViewHol
             intent.putExtra("awards", movie.awards)
             intent.putExtra("actors", movie.actors)
             intent.putExtra("genre", movie.category)
-            context.startActivity(intent)
 
+            intent.putExtra("imdbId", movie.imdbID)
+            intent.putExtra("isFavorite", holder.itemView.ivFavorite.isSelected)
+            intent.putExtra("isBookmark", holder.itemView.ivBookmark.isSelected)
+            context.startActivity(intent)
         }
     }
 
@@ -56,13 +90,13 @@ class MovieListFragAdapter : RecyclerView.Adapter<MovieListFragAdapter.MyViewHol
         return movieList.size
     }
 
-    fun setNewDataList(list: List<Movie>){
+    fun setNewDataList(list: List<Movie>) {
         movieList.clear()
         movieList.addAll(list)
         notifyDataSetChanged()
     }
 
-    fun setNewData(movie: Movie){
+    fun setNewData(movie: Movie) {
         movieList.add(movie)
         notifyItemInserted(movieList.size - 1)
     }
