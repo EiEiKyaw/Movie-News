@@ -13,7 +13,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="#B8B8B8"
             app:layout_scrollFlags="noScroll">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,9 +23,9 @@
                 <ImageView
                     android:id="@+id/ivMoviePoster"
                     android:layout_width="match_parent"
-                    android:layout_height="210dp"
+                    android:layout_height="230dp"
                     android:adjustViewBounds="true"
-                    android:background="@color/bg_poster"
+                    android:background="#E6000000"
                     android:contentDescription="@string/lb_banner_image"
                     android:scaleType="fitCenter"
                     android:paddingTop="4dp"
@@ -93,8 +93,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginBottom="8dp"
-                    android:textColor="#048F04"
-                    android:text="(84,00 votes)"
+                    android:textColor="@color/green"
+                    android:text="@string/lb_sample_votes"
                     app:layout_constraintStart_toEndOf="@id/tvRating"
                     app:layout_constraintTop_toTopOf="@id/lbRating"
                     app:layout_constraintBottom_toBottomOf="parent"/>
@@ -121,6 +121,7 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/bg_detail"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -133,7 +134,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/lb_description"
@@ -242,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="@string/lb_sample_runtime"
-                android:textColor="#048F04"
+                android:textColor="@color/green"
                 android:textAllCaps="false"
                 app:layout_constraintTop_toBottomOf="@id/lbRuntime"
                 app:layout_constraintStart_toStartOf="@id/tvDescription"

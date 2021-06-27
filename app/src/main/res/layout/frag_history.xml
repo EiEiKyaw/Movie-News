@@ -10,12 +10,12 @@
         android:id="@+id/tlHistory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/bg_nav"
+        android:background="@color/bg_poster"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIconTint="#FFFFFF"
-        app:tabIndicatorColor="#FFFFFF"
+        app:tabIconTint="@color/bg_nav"
+        app:tabIndicatorColor="@color/bg_nav"
         app:tabIndicatorHeight="4dp">
 
         <com.google.android.material.tabs.TabItem
@@ -36,8 +36,8 @@
         android:id="@+id/vpHistory"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

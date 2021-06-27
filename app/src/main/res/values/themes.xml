@@ -19,7 +19,7 @@
     </style>
 
     <style name="movieDetail.description">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="movieDetail.title">
@@ -29,7 +29,7 @@
     </style>
 
     <style name="movieDetail.title.only">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textStyle">italic|bold</item>
     </style>
 
@@ -40,15 +40,24 @@
     </style>
 
     <style name="movieDetail.title.sub">
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">#040404</item>
     </style>
 
     <style name="movieDetail.note">
         <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="movieDetail.note.value">
         <item name="android:textStyle">italic</item>
         <item name="android:textColor">#0800FF</item>
+    </style>
+
+    <style name="itemMovie">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+<!--        <item name="android:background">#33D67208</item>-->
+        <item name="android:textSize">22sp</item>
     </style>
 </resources>

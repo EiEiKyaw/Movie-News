@@ -40,4 +40,5 @@
     <string name="sample_genre">Action, Adventure, Crime</string>
     <string name="lb_runtime"><u>Runtime</u></string>
     <string name="lb_sample_runtime">43 min</string>
+    <string name="lb_sample_votes">(84,00 votes)</string>
 </resources>

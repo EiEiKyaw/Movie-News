@@ -11,11 +11,9 @@ import com.android.tutorial.couch_potato.listener.MovieListener
 import com.android.tutorial.couch_potato.model.Movie
 import com.android.tutorial.couch_potato.model.MovieHistory
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_fav_movie.view.*
 import kotlinx.android.synthetic.main.item_movie_detail.view.ivMoviePoster
 import kotlinx.android.synthetic.main.item_movie_detail.view.tvMovieTitle
 import kotlinx.android.synthetic.main.item_movie_list.view.*
-import kotlinx.android.synthetic.main.item_movie_list.view.ivFavorite
 
 class FavoriteMovieListAdapter(val listener: MovieListener) :
     RecyclerView.Adapter<FavoriteMovieListAdapter.MyViewHolder>() {

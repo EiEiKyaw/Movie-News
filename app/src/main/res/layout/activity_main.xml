@@ -5,14 +5,20 @@
     android:layout_height="match_parent"
     android:background="@color/bg_layout">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/containerContent"
+        app:layout_constraintBottom_toBottomOf="@id/containerContent"
+        app:layout_constraintStart_toStartOf="@id/containerContent"
+        app:layout_constraintEnd_toEndOf="@+id/containerContent" />
+
     <FrameLayout
         android:id="@+id/containerContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/botNav"
         app:layout_constraintStart_toStartOf="parent"
