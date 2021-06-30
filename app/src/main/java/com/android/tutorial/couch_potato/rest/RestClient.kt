@@ -1,6 +1,7 @@
 package com.android.tutorial.couch_potato.rest
 
 import com.android.tutorial.couch_potato.util.AppKeyInterceptor
+import com.android.tutorial.couch_potato.util.Constant
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,7 +13,7 @@ class RestClient {
     companion object {
         fun getApiService(): ApiService {
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://www.omdbapi.com/")
+                .baseUrl(Constant.BASE_URL)
                 .client(getClient())
                 .addConverterFactory(getConverter())
                 .build()
@@ -23,7 +24,7 @@ class RestClient {
             val loggingInterceptor = HttpLoggingInterceptor()
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-            val apiKeyInterceptor = AppKeyInterceptor("9494436b")
+            val apiKeyInterceptor = AppKeyInterceptor(Constant.API_KEY)
 
             return OkHttpClient.Builder()
                 .addInterceptor(apiKeyInterceptor)

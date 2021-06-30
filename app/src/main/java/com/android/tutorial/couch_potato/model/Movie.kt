@@ -18,7 +18,7 @@ class Movie(
     @SerializedName("Metascore") val metascore: String,
     @SerializedName("imdbRating") val imdbRating: String,
     @SerializedName("imdbVotes") val imdbVotes: String,
-    @SerializedName("imdbID") val imdbID: String,
+    @SerializedName("imdbID") val imdbId: String,
     @SerializedName("Type") val type: String,
     @SerializedName("Production") val production: String,
     @SerializedName("Website") val website: String

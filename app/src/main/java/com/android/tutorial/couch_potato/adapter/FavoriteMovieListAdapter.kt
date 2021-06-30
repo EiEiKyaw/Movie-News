@@ -10,6 +10,7 @@ import com.android.tutorial.couch_potato.activity.MovieDetailActivity
 import com.android.tutorial.couch_potato.listener.MovieListener
 import com.android.tutorial.couch_potato.model.Movie
 import com.android.tutorial.couch_potato.model.MovieHistory
+import com.android.tutorial.couch_potato.util.Constant
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_movie_detail.view.ivMoviePoster
 import kotlinx.android.synthetic.main.item_movie_detail.view.tvMovieTitle
@@ -47,7 +48,7 @@ class FavoriteMovieListAdapter(val listener: MovieListener) :
             isFavorite = !isFavorite
             holder.itemView.ivFavorite.isSelected = isFavorite
             val movieHistory = MovieHistory(
-                imdbId = movie.imdbID,
+                imdbId = movie.imdbId,
                 isFavorite = isFavorite,
                 isBookmark = false
             )
@@ -58,18 +59,17 @@ class FavoriteMovieListAdapter(val listener: MovieListener) :
             val context = holder.itemView.context
             val intent = Intent(context, MovieDetailActivity::class.java)
 
-            intent.putExtra("moviePoster", movie.posterImg)
-            intent.putExtra("movieTitle", movie.title)
-            intent.putExtra("releasedDate", movie.releasedYear)
-            intent.putExtra("description", movie.plot)
-            intent.putExtra("imdbRating", movie.imdbRating)
-            intent.putExtra("imdbVotes", movie.imdbVotes)
-            intent.putExtra("awards", movie.awards)
-            intent.putExtra("actors", movie.actors)
-            intent.putExtra("genre", movie.category)
-            intent.putExtra("runtime", movie.runtime)
-
-            intent.putExtra("imdbId", movie.imdbID)
+            intent.putExtra(Constant.MOVIE_POSTER, movie.posterImg)
+            intent.putExtra(Constant.MOVIE_TITLE, movie.title)
+            intent.putExtra(Constant.RELEASED_DATE, movie.releasedYear)
+            intent.putExtra(Constant.DESCRIPTION, movie.plot)
+            intent.putExtra(Constant.IMDB_RATING, movie.imdbRating)
+            intent.putExtra(Constant.IMDB_VOTES, movie.imdbVotes)
+            intent.putExtra(Constant.AWARDS, movie.awards)
+            intent.putExtra(Constant.ACTORS, movie.actors)
+            intent.putExtra(Constant.GENRE, movie.category)
+            intent.putExtra(Constant.RUNTIME, movie.runtime)
+            intent.putExtra(Constant.IMDB_ID, movie.imdbId)
             context.startActivity(intent)
         }
     }

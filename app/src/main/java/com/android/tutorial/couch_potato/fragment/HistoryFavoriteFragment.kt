@@ -1,7 +1,6 @@
 package com.android.tutorial.couch_potato.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +11,11 @@ import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.adapter.FavoriteMovieListAdapter
 import com.android.tutorial.couch_potato.listener.MovieListener
 import com.android.tutorial.couch_potato.model.MovieHistory
+import com.android.tutorial.couch_potato.util.Constant
 import com.android.tutorial.couch_potato.util.ManageMovieHistory
 import com.android.tutorial.couch_potato.viewmodel.MovieDetailViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.frag_history.*
 
 class HistoryFavoriteFragment : Fragment(), MovieListener {
 
@@ -44,15 +45,22 @@ class HistoryFavoriteFragment : Fragment(), MovieListener {
         }
         rvMovies.adapter = adapter
         rvMovies.layoutManager =
-            LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         return view
     }
 
     override fun onFavoriteClicked(movie: MovieHistory) {
-        ManageMovieHistory.manage(movie, "favorite-movies")
+        ManageMovieHistory.manage(movie, Constant.FAVORITE_PATH)
     }
 
     override fun onBookmarkClicked(movie: MovieHistory) {
-        TODO("Not yet implemented")
+    }
+
+    override fun showLoading() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        progressBar.visibility = View.GONE
     }
 }
