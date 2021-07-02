@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.adapter.FavoriteMovieListAdapter
-import com.android.tutorial.couch_potato.listener.MovieListener
 import com.android.tutorial.couch_potato.model.MovieHistory
 import com.android.tutorial.couch_potato.util.Constant
 import com.android.tutorial.couch_potato.util.ManageMovieHistory
@@ -17,7 +15,7 @@ import com.android.tutorial.couch_potato.viewmodel.MovieDetailViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.frag_history.*
 
-class HistoryFavoriteFragment : Fragment(), MovieListener {
+class HistoryFavoriteFragment : BaseFragment() {
 
     private lateinit var viewModel: MovieDetailViewModel
     private lateinit var adapter: FavoriteMovieListAdapter
@@ -51,9 +49,6 @@ class HistoryFavoriteFragment : Fragment(), MovieListener {
 
     override fun onFavoriteClicked(movie: MovieHistory) {
         ManageMovieHistory.manage(movie, Constant.FAVORITE_PATH)
-    }
-
-    override fun onBookmarkClicked(movie: MovieHistory) {
     }
 
     override fun showLoading() {

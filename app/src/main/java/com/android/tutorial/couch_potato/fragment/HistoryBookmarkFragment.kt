@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.adapter.BookmarkMovieListAdapter
-import com.android.tutorial.couch_potato.listener.MovieListener
 import com.android.tutorial.couch_potato.model.MovieHistory
 import com.android.tutorial.couch_potato.util.Constant
 import com.android.tutorial.couch_potato.util.ManageMovieHistory
@@ -17,7 +16,7 @@ import com.android.tutorial.couch_potato.viewmodel.MovieDetailViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.frag_history.*
 
-class HistoryBookmarkFragment : Fragment(), MovieListener {
+class HistoryBookmarkFragment : BaseFragment() {
 
     private lateinit var viewModel: MovieDetailViewModel
     private lateinit var adapter: BookmarkMovieListAdapter
@@ -29,7 +28,7 @@ class HistoryBookmarkFragment : Fragment(), MovieListener {
     ): View? {
         val view = inflater.inflate(R.layout.frag_history_bookmark, container, false)
         adapter = BookmarkMovieListAdapter(this)
-        viewModel = MovieDetailViewModel()
+        viewModel = ViewModelProvider(this)[MovieDetailViewModel::class.java]
         val rvMovies: RecyclerView = view.findViewById(R.id.rvBookmarkMovies)
         FirebaseFirestore.getInstance().collection("bookmark-movies").get().addOnCompleteListener {
             if (it.isSuccessful) {
@@ -47,9 +46,6 @@ class HistoryBookmarkFragment : Fragment(), MovieListener {
         rvMovies.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         return view
-    }
-
-    override fun onFavoriteClicked(movie: MovieHistory) {
     }
 
     override fun onBookmarkClicked(movie: MovieHistory) {

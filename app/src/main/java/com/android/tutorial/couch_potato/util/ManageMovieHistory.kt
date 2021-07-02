@@ -31,6 +31,12 @@ class ManageMovieHistory {
                         else if (path == Constant.BOOKMARK_PATH)
                             collection.document(documentId).update(Constant.IS_BOOKMARK, movie.isBookmark)
                     }
+
+//                    if (isValid) {
+//                        collection.document(documentId).delete()
+//                    } else {
+//                        collection.add(data)
+//                    }
                 }
             }
         }

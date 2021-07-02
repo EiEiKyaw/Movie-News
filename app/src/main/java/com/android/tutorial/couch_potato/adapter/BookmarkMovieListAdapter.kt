@@ -1,7 +1,6 @@
 package com.android.tutorial.couch_potato.adapter
 
 import android.content.Intent
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -17,22 +16,19 @@ import kotlinx.android.synthetic.main.item_movie_detail.view.tvMovieTitle
 import kotlinx.android.synthetic.main.item_movie_list.view.*
 
 class BookmarkMovieListAdapter(val listener: MovieListener) :
-    RecyclerView.Adapter<BookmarkMovieListAdapter.MyViewHolder>() {
-
-    private val movieList = mutableListOf<Movie>()
+    BaseAdapter<Movie, BookmarkMovieListAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_bm_movie, parent, false)
+        val view = getLayoutInflator(parent).inflate(R.layout.item_bm_movie, parent, false)
         return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val movie = movieList[position]
+        val movie = itemList[position]
 
         holder.itemView.apply {
             Glide.with(context)
@@ -53,8 +49,6 @@ class BookmarkMovieListAdapter(val listener: MovieListener) :
                 isBookmark = isBookmark
             )
             listener.onBookmarkClicked(movieHistory)
-            if(!isBookmark)
-                removeSelected(movie)
         }
 
         holder.itemView.setOnClickListener {
@@ -76,39 +70,23 @@ class BookmarkMovieListAdapter(val listener: MovieListener) :
         }
     }
 
-    override fun getItemCount(): Int {
-        return movieList.size
-    }
-
-    fun setNewDataList(list: List<Movie>) {
-        movieList.clear()
-        movieList.addAll(list)
-        notifyDataSetChanged()
-    }
-
-    fun setNewData(movie: Movie) {
-        if (!movieList.contains(movie))
-            movieList.add(movie)
-        notifyItemInserted(movieList.size - 1)
-    }
-
     fun addSelected(movie: Movie) {
-        movieList.add(movie)
-        val index = movieList.indexOf(movie)
+        itemList.add(movie)
+        val index = itemList.indexOf(movie)
         notifyItemChanged(index)
     }
 
     fun removeSelected(movie: Movie) {
-        movieList.remove(movie)
-        val index = movieList.indexOf(movie)
+        itemList.remove(movie)
+        val index = itemList.indexOf(movie)
         notifyItemChanged(index)
     }
 
     fun removeSelected(movie: MovieHistory) {
-        var list = movieList.filter {
+        var list = itemList.filter {
             it.imdbId == movie.imdbId
         }
-        val index = movieList.indexOf(list[0])
+        val index = itemList.indexOf(list[0])
         notifyItemChanged(index)
     }
 

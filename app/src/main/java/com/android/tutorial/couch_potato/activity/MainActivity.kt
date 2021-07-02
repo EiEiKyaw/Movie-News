@@ -1,14 +1,13 @@
 package com.android.tutorial.couch_potato.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.android.tutorial.couch_potato.R
 import com.android.tutorial.couch_potato.fragment.HistoryFragment
 import com.android.tutorial.couch_potato.fragment.MovieListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

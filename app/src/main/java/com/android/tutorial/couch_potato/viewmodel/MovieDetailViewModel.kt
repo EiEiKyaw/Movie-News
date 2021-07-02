@@ -2,14 +2,13 @@ package com.android.tutorial.couch_potato.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.android.tutorial.couch_potato.model.Movie
 import com.android.tutorial.couch_potato.rest.RestClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieDetailViewModel : ViewModel() {
+class MovieDetailViewModel : BaseViewModel() {
 
     val isLoading = MutableLiveData<Boolean>()
     val movieByTitle = MutableLiveData<Movie>()

@@ -1,7 +1,6 @@
 package com.android.tutorial.couch_potato.adapter
 
 import android.content.Intent
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -17,22 +16,19 @@ import kotlinx.android.synthetic.main.item_movie_detail.view.tvMovieTitle
 import kotlinx.android.synthetic.main.item_movie_list.view.*
 
 class MovieListFragAdapter(val listener: MovieListener) :
-    RecyclerView.Adapter<MovieListFragAdapter.MyViewHolder>() {
-
-    private val movieList = mutableListOf<Movie>()
+    BaseAdapter<Movie, MovieListFragAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_movie_list, parent, false)
+        val view = getLayoutInflator(parent).inflate(R.layout.item_movie_list, parent, false)
         return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val movie = movieList[position]
+        val movie = itemList[position]
 
         holder.itemView.apply {
             Glide.with(context)
@@ -85,22 +81,6 @@ class MovieListFragAdapter(val listener: MovieListener) :
             intent.putExtra(Constant.IS_BOOKMARK, holder.itemView.ivBookmark.isSelected)
             context.startActivity(intent)
         }
-    }
-
-    override fun getItemCount(): Int {
-        return movieList.size
-    }
-
-    fun setNewDataList(list: List<Movie>) {
-        movieList.clear()
-        movieList.addAll(list)
-        notifyDataSetChanged()
-    }
-
-    fun setNewData(movie: Movie) {
-        if (!movieList.contains(movie))
-            movieList.add(movie)
-        notifyItemInserted(movieList.size - 1)
     }
 
 }
